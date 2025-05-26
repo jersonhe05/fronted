@@ -1,0 +1,271 @@
+.gradesPage {
+  width: 100%;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.headerInfo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.courseSelector {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.exportButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-primary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.exportButton:hover {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+.exportButton svg {
+  margin-right: 0.375rem;
+}
+
+.gradesLayout {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.gradesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.searchBox {
+  position: relative;
+  width: 300px;
+}
+
+.searchBox svg {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.searchBox input {
+  width: 100%;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: var(--transition-default);
+}
+
+.searchBox input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 87, 232, 0.1);
+}
+
+.gradeStats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--background-secondary);
+  border-radius: 0.375rem;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.assignmentsList, .studentGradesList {
+  margin-bottom: 2rem;
+}
+
+.assignmentsList h2, .studentGradesList h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.assignmentsTable, .gradeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.assignmentsTable th, .gradeTable th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--background-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.assignmentsTable td, .gradeTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statusPublished {
+  background-color: #e6f7ef;
+  color: var(--success-color);
+}
+
+.statusDraft {
+  background-color: #fff8eb;
+  color: var(--warning-color);
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.actionButton:hover {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+.gradeTableContainer {
+  overflow-x: auto;
+}
+
+.studentNameHeader {
+  min-width: 200px;
+}
+
+.studentName {
+  font-weight: 500;
+}
+
+.scoreWrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.score {
+  font-weight: 600;
+}
+
+.maxScore {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+.totalScore {
+  font-weight: 600;
+}
+
+.excellentScore {
+  color: var(--success-color);
+}
+
+.goodScore {
+  color: var(--primary-color);
+}
+
+.averageScore {
+  color: var(--warning-color);
+}
+
+.poorScore {
+  color: var(--danger-color);
+}
+
+@media (max-width: 992px) {
+  .gradesHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .searchBox {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gradeStats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .assignmentsTable, .gradeTable {
+    font-size: 0.8125rem;
+  }
+
+  .assignmentsTable th, .assignmentsTable td, 
+  .gradeTable th, .gradeTable td {
+    padding: 0.625rem 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .statItem {
+    padding: 0.625rem 1rem;
+  }
+}

@@ -1,0 +1,403 @@
+.courseDetailsPage {
+  width: 100%;
+}
+
+.pageHeader {
+  margin-bottom: 1.5rem;
+}
+
+.courseInfo {
+  margin-bottom: 1rem;
+}
+
+.courseInfo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.courseInfo p {
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+}
+
+.instructorInfo {
+  display: flex;
+  align-items: center;
+}
+
+.instructorLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.instructorName {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.courseTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.courseTab {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-default);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.courseTab svg {
+  margin-right: 0.5rem;
+}
+
+.courseTab:hover {
+  color: var(--primary-color);
+}
+
+.activeTab {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.contentLayout {
+  display: flex;
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.contentSidebar {
+  width: 280px;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--background-secondary);
+  flex-shrink: 0;
+}
+
+.sidebarHeader {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebarHeader h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.moduleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.moduleItem {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.moduleItem:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.activeModule {
+  background-color: var(--primary-light);
+}
+
+.moduleNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.activeModule .moduleNumber {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.moduleName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.contentMain {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.contentHeader {
+  margin-bottom: 1.5rem;
+}
+
+.contentHeader h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.moduleContentList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contentItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 0.375rem;
+  transition: var(--transition-default);
+}
+
+.contentItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.contentItemIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.25rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.contentItemInfo {
+  flex: 1;
+}
+
+.contentItemInfo h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.contentItemMeta {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.dueDate {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.contentItemActions {
+  margin-left: 1rem;
+}
+
+.downloadButton, .submitButton, .startButton, .viewButton {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.downloadButton {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.downloadButton:hover {
+  background-color: var(--primary-light);
+}
+
+.submitButton {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: #2845d1;
+}
+
+.startButton {
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.startButton:hover {
+  background-color: #24b263;
+}
+
+.viewButton {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.viewButton:hover {
+  background-color: var(--primary-light);
+}
+
+.downloadButton svg, .submitButton svg {
+  margin-right: 0.375rem;
+}
+
+.assignmentsTab, .quizzesTab, .forumsTab, .gradesTab {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.assignmentsTab h2, .quizzesTab h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+}
+
+.assignmentsList, .quizzesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.assignmentItem, .quizItem {
+  background-color: var(--background-secondary);
+  border-radius: 0.375rem;
+  padding: 1.25rem;
+}
+
+.assignmentHeader, .quizHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.assignmentHeader h3, .quizHeader h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.statusPending {
+  background-color: #fff8eb;
+  color: var(--warning-color);
+}
+
+.statusSubmitted {
+  background-color: #eaefff;
+  color: var(--primary-color);
+}
+
+.statusGraded, .statusCompleted {
+  background-color: #e6f7ef;
+  color: var(--success-color);
+}
+
+.assignmentDetails, .quizDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.moduleName {
+  font-weight: 500;
+}
+
+.submittedDate, .grade {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.assignmentActions, .quizActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+  .contentLayout {
+    flex-direction: column;
+  }
+
+  .contentSidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .courseTab {
+    padding: 0.75rem 1rem;
+  }
+
+  .assignmentHeader, .quizHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contentItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contentItemIcon {
+    margin-bottom: 0.75rem;
+    margin-right: 0;
+  }
+
+  .contentItemActions {
+    margin-left: 0;
+    margin-top: 0.75rem;
+    align-self: flex-end;
+  }
+}

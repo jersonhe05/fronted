@@ -1,0 +1,248 @@
+.teacherHome {
+  width: 100%;
+}
+
+.pageHeader {
+  margin-bottom: 1.5rem;
+}
+
+.pageHeader h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.pageHeader p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.statCard {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.statInfo {
+  flex: 1;
+}
+
+.statInfo h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.statInfo p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.gridItem {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.cardHeader h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.viewAllLink {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.viewAllLink:hover {
+  text-decoration: underline;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.addButton:hover {
+  background-color: rgba(58, 87, 232, 0.2);
+}
+
+.addButton svg {
+  margin-right: 0.25rem;
+}
+
+.courseList, .announcementList, .deadlineList, .activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.courseCard {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  background-color: var(--background-secondary);
+  transition: var(--transition-default);
+  text-decoration: none;
+  color: inherit;
+}
+
+.courseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+.courseInfo {
+  flex: 1;
+}
+
+.courseInfo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.courseInfo p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem;
+}
+
+.studentCount {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.announcementCard, .deadlineCard {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  background-color: var(--background-secondary);
+}
+
+.announcementHeader, .deadlineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.announcementHeader h3, .deadlineHeader h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.announcementDate, .deadlineDate, .activityTime {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.announcementCard p, .deadlineCard p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.courseName {
+  font-size: 0.8125rem;
+  color: var(--primary-color);
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.activityContent {
+  flex: 1;
+}
+
+.activityContent p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem;
+}
+
+@media (max-width: 992px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

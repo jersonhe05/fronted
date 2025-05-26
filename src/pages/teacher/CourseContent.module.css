@@ -1,0 +1,444 @@
+.courseContentPage {
+  width: 100%;
+}
+
+.pageHeader {
+  margin-bottom: 1.5rem;
+}
+
+.courseInfo {
+  margin-bottom: 1rem;
+}
+
+.courseInfo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.courseInfo p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.courseTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.courseTab {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-default);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.courseTab svg {
+  margin-right: 0.5rem;
+}
+
+.courseTab:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.activeTab {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.contentLayout {
+  display: flex;
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.contentSidebar {
+  width: 280px;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--background-secondary);
+  flex-shrink: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebarHeader h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.addModuleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.addModuleButton:hover {
+  background-color: rgba(58, 87, 232, 0.2);
+}
+
+.moduleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.moduleItem {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.moduleItem:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.activeModule {
+  background-color: var(--primary-light);
+}
+
+.moduleNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.activeModule .moduleNumber {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.moduleName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.contentMain {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.contentHeader h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.addContentButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.addContentButton:hover {
+  background-color: #2845d1;
+}
+
+.addContentButton svg {
+  margin-right: 0.375rem;
+}
+
+.moduleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contentSection {
+  background-color: var(--background-secondary);
+  border-radius: 0.375rem;
+  padding: 1.25rem;
+}
+
+.contentSection h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.contentSection p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader h3 {
+  margin: 0;
+}
+
+.addResourceButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.addResourceButton:hover {
+  background-color: rgba(58, 87, 232, 0.2);
+}
+
+.addResourceButton svg {
+  margin-right: 0.25rem;
+}
+
+.resourcesList, .activitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resourceItem {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+}
+
+.resourceIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.25rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+}
+
+.resourceInfo {
+  flex: 1;
+}
+
+.resourceInfo h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.resourceInfo p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.resourceActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.resourceButton {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.resourceButton:hover {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+.activityItem {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.activityHeader h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.activityMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.activityType {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary-color);
+  padding: 0.125rem 0.375rem;
+  border-radius: 9999px;
+  margin-bottom: 0.25rem;
+}
+
+.activityDate {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.activityItem p {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.activityStats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.activityStats span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.activityActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.activityButton {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.activityButton:hover {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+.contentPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--background-secondary);
+  border-radius: 0.375rem;
+  text-align: center;
+}
+
+.contentPlaceholder p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 992px) {
+  .contentLayout {
+    flex-direction: column;
+  }
+
+  .contentSidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .courseTab {
+    padding: 0.75rem 1rem;
+  }
+
+  .activityHeader {
+    flex-direction: column;
+  }
+
+  .activityMeta {
+    align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contentHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

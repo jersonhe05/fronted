@@ -1,0 +1,239 @@
+.coursesPage {
+  width: 100%;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pageHeader h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.newCourseButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.newCourseButton:hover {
+  background-color: #2845d1;
+}
+
+.newCourseButton svg {
+  margin-right: 0.375rem;
+}
+
+.filtersContainer {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.searchBox {
+  flex: 1;
+  position: relative;
+  max-width: 400px;
+}
+
+.searchBox svg {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.searchBox input {
+  width: 100%;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: var(--transition-default);
+}
+
+.searchBox input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 87, 232, 0.1);
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-primary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.filterButton svg {
+  margin-right: 0.375rem;
+}
+
+.filterButton:hover {
+  background-color: var(--background-secondary);
+}
+
+.filterActive {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border-color: transparent;
+}
+
+.filterActive:hover {
+  background-color: rgba(58, 87, 232, 0.2);
+}
+
+.coursesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.25rem;
+}
+
+.courseCard {
+  display: flex;
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  transition: var(--transition-default);
+  text-decoration: none;
+  color: inherit;
+}
+
+.courseCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.courseIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.375rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.courseDetails {
+  flex: 1;
+}
+
+.courseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.courseHeader h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.courseStatus {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.statusActive {
+  background-color: #e6f7ef;
+  color: var(--success-color);
+}
+
+.statusInactive {
+  background-color: #fdeded;
+  color: var(--danger-color);
+}
+
+.courseInfo {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.courseCode, .programName {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.courseCode::before {
+  content: 'Código: ';
+  font-weight: 500;
+}
+
+.programName::before {
+  content: 'Programa: ';
+  font-weight: 500;
+}
+
+.courseStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statItem {
+  display: flex;
+  font-size: 0.8125rem;
+}
+
+.statLabel {
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-right: 0.25rem;
+}
+
+.statValue {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .coursesList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .filtersContainer {
+    flex-direction: column;
+  }
+  
+  .searchBox {
+    max-width: none;
+  }
+}
