@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { Calendar, Search, Download, CheckSquare, X } from 'lucide-react';
+import { Calendar, Search, Download, CheckSquare, X, Clock } from 'lucide-react';
 import styles from './Attendance.module.css';
 
 const Attendance = () => {
   const [selectedDate, setSelectedDate] = useState('2023-05-15');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const students = [
-    { id: 1, name: 'Ana María González', program: 'Aeronáutica', present: true },
-    { id: 2, name: 'Carlos Rodríguez', program: 'Aeronáutica', present: true },
-    { id: 3, name: 'Diana Martínez', program: 'Aeronáutica', present: false },
-    { id: 4, name: 'Eduardo Sánchez', program: 'Aeronáutica', present: true },
-    { id: 5, name: 'Fernanda López', program: 'Aeronáutica', present: true },
-    { id: 6, name: 'Gabriel Torres', program: 'Aeronáutica', present: true },
-    { id: 7, name: 'Helena Vargas', program: 'Aeronáutica', present: false },
-    { id: 8, name: 'Ignacio Mendoza', program: 'Aeronáutica', present: true },
-    { id: 9, name: 'Julia Paredes', program: 'Aeronáutica', present: true },
-    { id: 10, name: 'Kevin Ramírez', program: 'Aeronáutica', present: false },
-  ];
+  const [students, setStudents] = useState([
+    { id: 1, name: 'Ana María González', program: 'Aeronáutica', status: 'present' },
+    { id: 2, name: 'Carlos Rodríguez', program: 'Aeronáutica', status: 'present' },
+    { id: 3, name: 'Diana Martínez', program: 'Aeronáutica', status: 'absent' },
+    { id: 4, name: 'Eduardo Sánchez', program: 'Aeronáutica', status: 'present' },
+    { id: 5, name: 'Fernanda López', program: 'Aeronáutica', status: 'excused' },
+  ]);
 
   const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -33,8 +28,58 @@ const Attendance = () => {
   ];
 
   const handleToggleAttendance = (studentId: number) => {
-    // In a real app, this would update the student's attendance status in the database
-    console.log(`Toggled attendance for student ${studentId}`);
+    setStudents(students.map(student => {
+      if (student.id === studentId) {
+        // Cycle through states: present -> absent -> excused -> present
+        const nextStatus = {
+          'present': 'absent',
+          'absent': 'excused',
+          'excused': 'present'
+        }[student.status] as 'present' | 'absent' | 'excused';
+        
+        return { ...student, status: nextStatus };
+      }
+      return student;
+    }));
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'present':
+        return <CheckSquare size={16} />;
+      case 'absent':
+        return <X size={16} />;
+      case 'excused':
+        return <Clock size={16} />;
+      default:
+        return null;
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'present':
+        return 'Presente';
+      case 'absent':
+        return 'Ausente';
+      case 'excused':
+        return 'Excusado';
+      default:
+        return '';
+    }
+  };
+
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case 'present':
+        return styles.presentButton;
+      case 'absent':
+        return styles.absentButton;
+      case 'excused':
+        return styles.excusedButton;
+      default:
+        return '';
+    }
   };
 
   return (
@@ -97,21 +142,21 @@ const Attendance = () => {
           <div className={styles.attendanceStats}>
             <div className={styles.statItem}>
               <span className={styles.statValue}>
-                {students.filter(s => s.present).length}
+                {students.filter(s => s.status === 'present').length}
               </span>
               <span className={styles.statLabel}>Presentes</span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statValue}>
-                {students.filter(s => !s.present).length}
+                {students.filter(s => s.status === 'absent').length}
               </span>
               <span className={styles.statLabel}>Ausentes</span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statValue}>
-                {((students.filter(s => s.present).length / students.length) * 100).toFixed(0)}%
+                {students.filter(s => s.status === 'excused').length}
               </span>
-              <span className={styles.statLabel}>Asistencia</span>
+              <span className={styles.statLabel}>Excusados</span>
             </div>
           </div>
 
@@ -127,20 +172,10 @@ const Attendance = () => {
                 <div className={styles.studentProgram}>{student.program}</div>
                 <div className={styles.studentAttendance}>
                   <button
-                    className={`${styles.attendanceButton} ${
-                      student.present ? styles.presentButton : styles.absentButton
-                    }`}
+                    className={`${styles.attendanceButton} ${getStatusClass(student.status)}`}
                     onClick={() => handleToggleAttendance(student.id)}
                   >
-                    {student.present ? (
-                      <>
-                        <CheckSquare size={16} /> Presente
-                      </>
-                    ) : (
-                      <>
-                        <X size={16} /> Ausente
-                      </>
-                    )}
+                    {getStatusIcon(student.status)} {getStatusText(student.status)}
                   </button>
                 </div>
               </div>

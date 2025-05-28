@@ -193,120 +193,14 @@
   max-height: 60vh;
 }
 
-.postItem {
-  margin-bottom: 1.5rem;
-  background-color: var(--background-secondary);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.postHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.authorInfo {
-  display: flex;
-  align-items: center;
-}
-
-.authorAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  margin-right: 0.75rem;
-}
-
-.authorDetails {
-  display: flex;
-  flex-direction: column;
-}
-
-.authorName {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.authorRole {
-  font-size: 0.75rem;
+.noForums {
+  padding: 2rem;
+  text-align: center;
   color: var(--text-secondary);
 }
 
-.postDate {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.postContent {
-  padding: 1.25rem;
-}
-
-.postContent p {
-  font-size: 0.875rem;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.repliesList {
-  border-top: 1px solid var(--border-color);
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-}
-
-.replyItem {
-  margin-left: 1.25rem;
-  border-left: 2px solid var(--border-color);
-  margin-bottom: 0.75rem;
-}
-
-.replyItem:last-child {
-  margin-bottom: 0;
-}
-
-.replyHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1.25rem;
-}
-
-.postActions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.75rem 1.25rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.replyButton {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: none;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition-default);
-}
-
-.replyButton:hover {
-  background-color: var(--primary-light);
-}
-
 .newPostForm {
-  padding: 1.25rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 1rem;
 }
 
 .newPostForm h3 {
@@ -346,6 +240,216 @@
 
 .submitButton:hover {
   background-color: #2845d1;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: var(--transition-default);
+}
+
+.closeButton:hover {
+  color: var(--text-primary);
+}
+
+.modalBody {
+  padding: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.formGroup input[type="text"],
+.formGroup select,
+.formGroup textarea,
+.formGroup input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: var(--transition-default);
+}
+
+.formGroup input[type="text"]:focus,
+.formGroup select:focus,
+.formGroup textarea:focus,
+.formGroup input[type="date"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 87, 232, 0.1);
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkboxGroup input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.fileInput:hover {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.fileInputIcon {
+  color: var(--text-secondary);
+}
+
+.fileInputText {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.modalFooter {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.cancelButton:hover {
+  background-color: var(--border-color);
+}
+
+.createButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.createButton:hover {
+  background-color: #2845d1;
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  opacity: 0;
+  transition: var(--transition-default);
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.forumItem:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  background-color: var(--danger-color);
+  color: white;
+  border-radius: 0.25rem;
 }
 
 @media (max-width: 992px) {

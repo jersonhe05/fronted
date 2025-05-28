@@ -1,11 +1,58 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { File, Plus, Book, CheckSquare, Users, MessageSquare, BarChart } from 'lucide-react';
+import { File, Plus, Book, CheckSquare, Users, MessageSquare, BarChart, X, Upload } from 'lucide-react';
 import styles from './CourseContent.module.css';
 
 const CourseContent = () => {
   const location = useLocation();
   const [currentModule, setCurrentModule] = useState(1);
+  const [modules, setModules] = useState([
+    { id: 1, name: 'Phrasal Verbs' },
+    { id: 2, name: 'Indefinite Articles' },
+    { id: 3, name: 'Nouns' },
+  ]);
+  const [showNewModuleModal, setShowNewModuleModal] = useState(false);
+  const [showNewContentModal, setShowNewContentModal] = useState(false);
+  const [newModuleName, setNewModuleName] = useState('');
+  const [newContent, setNewContent] = useState({
+    title: '',
+    description: '',
+    type: 'text',
+    file: null as File | null
+  });
+
+  const handleAddModule = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newModule = {
+      id: modules.length + 1,
+      name: newModuleName
+    };
+    setModules([...modules, newModule]);
+    setNewModuleName('');
+    setShowNewModuleModal(false);
+  };
+
+  const handleAddContent = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would add the content to the current module
+    console.log('New content:', newContent);
+    setShowNewContentModal(false);
+    setNewContent({
+      title: '',
+      description: '',
+      type: 'text',
+      file: null
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setNewContent({
+        ...newContent,
+        file: e.target.files[0]
+      });
+    }
+  };
 
   return (
     <div className={styles.courseContentPage}>
@@ -57,38 +104,36 @@ const CourseContent = () => {
         <div className={styles.contentSidebar}>
           <div className={styles.sidebarHeader}>
             <h2>Módulos</h2>
-            <button className={styles.addModuleButton}>
+            <button 
+              className={styles.addModuleButton}
+              onClick={() => setShowNewModuleModal(true)}
+            >
               <Plus size={16} />
             </button>
           </div>
           <ul className={styles.moduleList}>
-            <li className={`${styles.moduleItem} ${currentModule === 1 ? styles.activeModule : ''}`} onClick={() => setCurrentModule(1)}>
-              <span className={styles.moduleNumber}>1</span>
-              <span className={styles.moduleName}>Phrasal Verbs</span>
-            </li>
-            <li className={`${styles.moduleItem} ${currentModule === 2 ? styles.activeModule : ''}`} onClick={() => setCurrentModule(2)}>
-              <span className={styles.moduleNumber}>2</span>
-              <span className={styles.moduleName}>Indefinite Articles</span>
-            </li>
-            <li className={`${styles.moduleItem} ${currentModule === 3 ? styles.activeModule : ''}`} onClick={() => setCurrentModule(3)}>
-              <span className={styles.moduleNumber}>3</span>
-              <span className={styles.moduleName}>Nouns</span>
-            </li>
-            <li className={styles.moduleItem}>
-              <span className={styles.moduleNumber}>+</span>
-              <span className={styles.moduleName}>Agregar Módulo</span>
-            </li>
+            {modules.map((module) => (
+              <li 
+                key={module.id}
+                className={`${styles.moduleItem} ${currentModule === module.id ? styles.activeModule : ''}`}
+                onClick={() => setCurrentModule(module.id)}
+              >
+                <span className={styles.moduleNumber}>{module.id}</span>
+                <span className={styles.moduleName}>{module.name}</span>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className={styles.contentMain}>
           <div className={styles.contentHeader}>
             <h2>
-              {currentModule === 1 && 'Phrasal Verbs'}
-              {currentModule === 2 && 'Indefinite Articles'}
-              {currentModule === 3 && 'Nouns'}
+              {modules.find(m => m.id === currentModule)?.name}
             </h2>
-            <button className={styles.addContentButton}>
+            <button 
+              className={styles.addContentButton}
+              onClick={() => setShowNewContentModal(true)}
+            >
               <Plus size={16} /> Agregar Contenido
             </button>
           </div>
@@ -213,6 +258,133 @@ const CourseContent = () => {
           )}
         </div>
       </div>
+
+      {showNewModuleModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalHeader}>
+              <h2>Nuevo Módulo</h2>
+              <button 
+                className={styles.closeButton}
+                onClick={() => setShowNewModuleModal(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={handleAddModule}>
+              <div className={styles.modalBody}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="moduleName">Nombre del módulo</label>
+                  <input
+                    type="text"
+                    id="moduleName"
+                    value={newModuleName}
+                    onChange={(e) => setNewModuleName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.cancelButton}
+                  onClick={() => setShowNewModuleModal(false)}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className={styles.createButton}>
+                  Crear Módulo
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showNewContentModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalHeader}>
+              <h2>Agregar Contenido</h2>
+              <button 
+                className={styles.closeButton}
+                onClick={() => setShowNewContentModal(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={handleAddContent}>
+              <div className={styles.modalBody}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="contentTitle">Título</label>
+                  <input
+                    type="text"
+                    id="contentTitle"
+                    value={newContent.title}
+                    onChange={(e) => setNewContent({...newContent, title: e.target.value})}
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="contentDescription">Descripción</label>
+                  <textarea
+                    id="contentDescription"
+                    value={newContent.description}
+                    onChange={(e) => setNewContent({...newContent, description: e.target.value})}
+                    rows={3}
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="contentType">Tipo de contenido</label>
+                  <select
+                    id="contentType"
+                    value={newContent.type}
+                    onChange={(e) => setNewContent({...newContent, type: e.target.value})}
+                  >
+                    <option value="text">Texto</option>
+                    <option value="file">Archivo</option>
+                    <option value="link">Enlace</option>
+                  </select>
+                </div>
+
+                {newContent.type === 'file' && (
+                  <div className={styles.formGroup}>
+                    <label htmlFor="contentFile">Archivo</label>
+                    <label className={styles.fileInput} htmlFor="contentFile">
+                      <Upload className={styles.fileInputIcon} size={20} />
+                      <span className={styles.fileInputText}>
+                        {newContent.file
+                          ? newContent.file.name
+                          : 'Haz clic para subir un archivo'}
+                      </span>
+                      <input
+                        type="file"
+                        id="contentFile"
+                        onChange={handleFileChange}
+                        style={{ display: 'none' }}
+                      />
+                    </label>
+                  </div>
+                )}
+              </div>
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.cancelButton}
+                  onClick={() => setShowNewContentModal(false)}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className={styles.createButton}>
+                  Agregar Contenido
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

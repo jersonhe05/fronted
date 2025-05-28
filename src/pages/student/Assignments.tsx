@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Search, Filter, Calendar, Upload } from 'lucide-react';
+import { Search, Filter, Calendar, Upload, X } from 'lucide-react';
 import styles from './Assignments.module.css';
 
 const Assignments = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
+  const [submissionData, setSubmissionData] = useState({
+    comments: '',
+    file: null as File | null
+  });
 
   const courses = [
     { id: 'all', name: 'Todos los cursos' },
@@ -63,6 +69,37 @@ const Assignments = () => {
     const matchesStatus = statusFilter === 'all' || assignment.status === statusFilter;
     return matchesSearch && matchesCourse && matchesStatus;
   });
+
+  const handleSubmitAssignment = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would handle the submission to your backend
+    console.log('Submitting assignment:', {
+      assignmentId: selectedAssignment?.id,
+      ...submissionData
+    });
+    
+    // Reset form and close modal
+    setSubmissionData({
+      comments: '',
+      file: null
+    });
+    setShowSubmitModal(false);
+    setSelectedAssignment(null);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSubmissionData({
+        ...submissionData,
+        file: e.target.files[0]
+      });
+    }
+  };
+
+  const openSubmitModal = (assignment: any) => {
+    setSelectedAssignment(assignment);
+    setShowSubmitModal(true);
+  };
 
   return (
     <div className={styles.assignmentsPage}>
@@ -161,7 +198,10 @@ const Assignments = () => {
             </div>
             <div className={styles.assignmentActions}>
               {assignment.status === 'pending' && (
-                <button className={styles.submitButton}>
+                <button 
+                  className={styles.submitButton}
+                  onClick={() => openSubmitModal(assignment)}
+                >
                   <Upload size={16} /> Entregar Tarea
                 </button>
               )}
@@ -179,6 +219,73 @@ const Assignments = () => {
           </div>
         ))}
       </div>
+
+      {showSubmitModal && selectedAssignment && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalHeader}>
+              <h2>Entregar Tarea</h2>
+              <button 
+                className={styles.closeButton}
+                onClick={() => setShowSubmitModal(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={handleSubmitAssignment}>
+              <div className={styles.modalBody}>
+                <div className={styles.assignmentInfo}>
+                  <h3>{selectedAssignment.title}</h3>
+                  <p>{selectedAssignment.course}</p>
+                  <p className={styles.dueDate}>Fecha límite: {selectedAssignment.dueDate}</p>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="comments">Comentarios (opcional)</label>
+                  <textarea
+                    id="comments"
+                    value={submissionData.comments}
+                    onChange={(e) => setSubmissionData({...submissionData, comments: e.target.value})}
+                    rows={4}
+                    placeholder="Añade comentarios sobre tu entrega..."
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="submissionFile">Archivo de entrega</label>
+                  <label className={styles.fileInput} htmlFor="submissionFile">
+                    <Upload className={styles.fileInputIcon} size={20} />
+                    <span className={styles.fileInputText}>
+                      {submissionData.file
+                        ? submissionData.file.name
+                        : 'Haz clic para subir tu archivo'}
+                    </span>
+                    <input
+                      type="file"
+                      id="submissionFile"
+                      onChange={handleFileChange}
+                      style={{ display: 'none' }}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className={styles.modalFooter}>
+                <button
+                  type="button"
+                  className={styles.cancelButton}
+                  onClick={() => setShowSubmitModal(false)}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className={styles.submitModalButton}>
+                  Entregar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -240,6 +240,175 @@
   background-color: var(--primary-light);
 }
 
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: var(--background-primary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: var(--transition-default);
+}
+
+.closeButton:hover {
+  color: var(--text-primary);
+}
+
+.modalBody {
+  padding: 1.5rem;
+}
+
+.assignmentInfo {
+  margin-bottom: 1.5rem;
+}
+
+.assignmentInfo h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.assignmentInfo p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem;
+}
+
+.dueDate {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  transition: var(--transition-default);
+}
+
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 87, 232, 0.1);
+}
+
+.fileInput {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.fileInput:hover {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.fileInputIcon {
+  color: var(--text-secondary);
+}
+
+.fileInputText {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.modalFooter {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.cancelButton:hover {
+  background-color: var(--border-color);
+}
+
+.submitModalButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.submitModalButton:hover {
+  background-color: #2845d1;
+}
+
 @media (max-width: 992px) {
   .filtersContainer {
     flex-wrap: wrap;
