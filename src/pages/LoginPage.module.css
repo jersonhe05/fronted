@@ -68,6 +68,15 @@
   margin: 0 auto;
 }
 
+.errorMessage {
+  background-color: #fdeded;
+  color: var(--danger-color);
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
 .formGroup {
   margin-bottom: 1.5rem;
 }
@@ -95,6 +104,11 @@
   box-shadow: 0 0 0 3px rgba(58, 87, 232, 0.1);
 }
 
+.formGroup input:disabled {
+  background-color: var(--background-secondary);
+  cursor: not-allowed;
+}
+
 .roleSelector {
   display: flex;
   gap: 1.5rem;
@@ -110,6 +124,10 @@
   margin-right: 0.5rem;
 }
 
+.roleSelector input:disabled {
+  cursor: not-allowed;
+}
+
 .loginButton {
   width: 100%;
   padding: 0.75rem;
@@ -122,8 +140,13 @@
   transition: var(--transition-default);
 }
 
-.loginButton:hover {
+.loginButton:hover:not(:disabled) {
   background-color: #2845d1;
+}
+
+.loginButton:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
 }
 
 .forgotPassword {

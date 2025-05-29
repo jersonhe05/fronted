@@ -7,12 +7,22 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const { handleLogin } = useUser();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would validate credentials with the backend
-    handleLogin({ email, role });
+    setError('');
+    setIsLoading(true);
+
+    try {
+      await handleLogin({ email, password });
+    } catch (error) {
+      setError('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -33,6 +43,8 @@ const LoginPage = () => {
         </div>
 
         <form className={styles.loginForm} onSubmit={handleSubmit}>
+          {error && <div className={styles.errorMessage}>{error}</div>}
+          
           <div className={styles.formGroup}>
             <label htmlFor="email">Correo</label>
             <input
@@ -42,6 +54,7 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ejemplo@unimagdalena.edu.co"
               required
+              disabled={isLoading}
             />
           </div>
 
@@ -54,6 +67,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
+              disabled={isLoading}
             />
           </div>
 
@@ -66,6 +80,7 @@ const LoginPage = () => {
                   value="student"
                   checked={role === 'student'}
                   onChange={() => setRole('student')}
+                  disabled={isLoading}
                 />
                 <span>Estudiante</span>
               </label>
@@ -76,14 +91,19 @@ const LoginPage = () => {
                   value="teacher"
                   checked={role === 'teacher'}
                   onChange={() => setRole('teacher')}
+                  disabled={isLoading}
                 />
                 <span>Profesor</span>
               </label>
             </div>
           </div>
 
-          <button type="submit" className={styles.loginButton}>
-            Iniciar Sesión
+          <button 
+            type="submit" 
+            className={styles.loginButton}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>
 
           <div className={styles.forgotPassword}>
