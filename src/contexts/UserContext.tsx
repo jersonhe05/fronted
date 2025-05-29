@@ -30,10 +30,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const handleLogin = async (credentials: { email: string; password: string }) => {
     try {
-      // This will be replaced with actual API call when backend is ready
+      // Esto se reemplazará con la llamada API real 
       const response = await mockLoginAPI(credentials);
       
-      // Store token and user data
+      //Almacenar tokens y datos de usuario
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', JSON.stringify({
         email: credentials.email,
@@ -57,12 +57,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setUserRole(null);
   };
 
-  // Mock API function - replace with actual API call later
+  //Función API simulada: reemplácela con una llamada API 
   const mockLoginAPI = async (credentials: { email: string; password: string }) => {
-    // Simulate API call delay
+    // Simular el retraso de la llamada API
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Mock response based on email domain
+    // Respuesta simulada basada en el dominio del correo electrónico
     const isTeacher = credentials.email.includes('teacher');
     return {
       token: 'mock-jwt-token-' + Math.random(),
