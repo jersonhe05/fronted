@@ -16,7 +16,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check for existing token in localStorage on app load
+    // Verificar si hay un token existente en el almacenamiento local al cargar la aplicación
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
     
